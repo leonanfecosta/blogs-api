@@ -25,6 +25,16 @@ const userController = {
       return res.status(500).json({ message: error.message });
     }
   },
+
+  getAllUsers: async (req, res) => {
+    try {
+      const users = await userService.getAllUsers();
+
+      return res.status(200).json(users);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    } 
+  },
 };
 
 module.exports = userController;

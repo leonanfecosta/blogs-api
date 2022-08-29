@@ -3,6 +3,7 @@ const loginController = require('./database/controller/loginController');
 const validateLogin = require('./database/middlewares/validateLogin');
 const userController = require('./database/controller/userController');
 const validateUser = require('./database/middlewares/validateUser');
+const validateJWT = require('./database/middlewares/validateJWT');
 
 // ...
 
@@ -19,6 +20,8 @@ app.post(
   validateUser.validatePassword,
   userController.createUser,
 );
+
+app.get('/user', validateJWT, userController.getAllUsers);
 
 // ...
 
