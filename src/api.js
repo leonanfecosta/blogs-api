@@ -4,6 +4,8 @@ const validateLogin = require('./database/middlewares/validateLogin');
 const userController = require('./database/controller/userController');
 const validateUser = require('./database/middlewares/validateUser');
 const validateJWT = require('./database/middlewares/validateJWT');
+const categoryController = require('./database/controller/categoryController');
+const validateCategory = require('./database/middlewares/validateNameCategory');
 
 // ...
 
@@ -24,6 +26,13 @@ app.post(
 app.get('/user', validateJWT, userController.getAllUsers);
 
 app.get('/user/:id', validateJWT, userController.getUserById);
+
+app.post(
+  '/categories',
+  validateJWT,
+  validateCategory,
+  categoryController.createCategory,
+);
 
 // ...
 
