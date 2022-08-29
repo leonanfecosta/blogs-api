@@ -34,6 +34,8 @@ app.post(
   categoryController.createCategory,
 );
 
+app.get('/categories', validateJWT, categoryController.getAllCategories);
+
 // ...
 
 // É importante exportar a constante `app`,
