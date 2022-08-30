@@ -34,6 +34,23 @@ const postController = {
       res.status(500).json({ message: error.message });
     }
   },
+
+  getPotsById: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const post = await postService.getPostById(id);
+
+      if (post.error) {
+        return res
+          .status(post.error.code)
+          .json({ message: post.error.message });
+      }
+
+      res.status(200).json(post);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  },
 };
 
 module.exports = postController;

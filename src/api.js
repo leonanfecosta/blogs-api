@@ -42,6 +42,8 @@ app.post('/post', validateJWT, validatePost, postController.create);
 
 app.get('/post', validateJWT, postController.getAllPosts);
 
+app.get('/post/:id', validateJWT, postController.getPotsById);
+
 // ...
 
 // É importante exportar a constante `app`,
